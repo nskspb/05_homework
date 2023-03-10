@@ -85,13 +85,13 @@ void run_test_suite(size_t iteration_count) {
 int main() {
 
 	run_test_suite(1);
-	std::cout << std::endl;
+	std::cout << std::endl << "*****************************" << std::endl;
 
 	run_test_suite(10);
-	std::cout << std::endl;
+	std::cout << std::endl << "*****************************" << std::endl;
 
 	run_test_suite(100);
-	std::cout << std::endl;
+	std::cout << std::endl << "*****************************" << std::endl;
 
 	return 0;
 }

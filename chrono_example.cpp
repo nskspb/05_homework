@@ -5,25 +5,29 @@
 #include <algorithm> // std::shuffle
 #include <random>	 // std::default_random_engine
 
-void fill_vector(std::vector<int> &values, size_t count) {
+void fill_vector(std::vector<int> &values, size_t count)
+{
 	values.resize(count);
-	for (size_t i = 0; i < count; ++i) {
+	for (size_t i = 0; i < count; ++i)
+	{
 		values[i] = static_cast<int>(i);
 	}
 }
 
 template <typename T>
-void make_random_shuffle(std::vector<T> &values) {
+void make_random_shuffle(std::vector<T> &values)
+{
 	// 1. Take current time (count of seconds since `epoch begining`) as a seed
 	auto seconds_count = std::chrono::system_clock::now().time_since_epoch().count();
 	unsigned int seed = static_cast<unsigned int>(seconds_count);
 	// 2. Initialize random engine
-	std::default_random_engine engine{seed};
+	std::default_random_engine e{seed};
 	// 3. Shuffle values
-	std::shuffle(values.begin(), values.end(), engine);
+	std::shuffle(values.begin(), values.end(), e);
 }
 
-void run_test_suite(size_t iteration_count) {
+void run_test_suite(size_t iteration_count)
+{
 	const size_t elements_count = 100000;
 	std::vector<int> values;
 	// fill values with elements_count elements
@@ -31,14 +35,14 @@ void run_test_suite(size_t iteration_count) {
 	// random shuffle values
 	make_random_shuffle(values);
 
-
 	std::cout << "iteration_count = " << iteration_count << std::endl;
 	// std::sort algorithm measuring
 	{
 		// Take a start time
 		auto start_time = std::chrono::system_clock::now();
 		// Make a several iterations
-		for (size_t i = 0; i < iteration_count; ++i) {
+		for (size_t i = 0; i < iteration_count; ++i)
+		{
 			std::vector<int> test_data = values;
 			std::sort(test_data.begin(), test_data.end());
 		}
@@ -56,13 +60,15 @@ void run_test_suite(size_t iteration_count) {
 		// Take a start time
 		auto start_time = std::chrono::system_clock::now();
 		// Make a several iterations
-		for (size_t i = 0; i < iteration_count; ++i) {
+		for (size_t i = 0; i < iteration_count; ++i)
+		{
 			std::vector<int> test_data = values;
 			std::qsort(
 				test_data.data(),
 				test_data.size(),
 				sizeof(int),
-				[](const void *x, const void *y) {
+				[](const void *x, const void *y)
+				{
 					const int arg1 = *static_cast<const int *>(x);
 					const int arg2 = *static_cast<const int *>(y);
 					if (arg1 < arg2)
@@ -82,16 +88,20 @@ void run_test_suite(size_t iteration_count) {
 	}
 }
 
-int main() {
+int main()
+{
 
 	run_test_suite(1);
-	std::cout << std::endl << "*****************************" << std::endl;
+	std::cout << std::endl
+			  << "*****************************" << std::endl;
 
 	run_test_suite(10);
-	std::cout << std::endl << "*****************************" << std::endl;
+	std::cout << std::endl
+			  << "*****************************" << std::endl;
 
 	run_test_suite(100);
-	std::cout << std::endl << "*****************************" << std::endl;
+	std::cout << std::endl
+			  << "*****************************" << std::endl;
 
 	return 0;
 }

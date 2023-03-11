@@ -1,6 +1,46 @@
 #include <iostream>
 #include <vector>
+#include <chrono>
+#include <algorithm>
+#include <math.h>
 
+namespace sort_vectors
+{
+
+    void example()
+    {
+
+        std ::vector<double> vect;
+
+        vect.push_back(5);
+        vect.push_back(13);
+        vect.push_back(3);
+        vect.push_back(7);
+        vect.push_back(5);
+        vect.push_back(6);
+        vect.push_back(1);
+
+        for (int i = 0; i < vect.size(); ++i)
+        {
+            std ::cout << vect[i] << "  ";
+        }
+
+        std ::cout << std ::endl;
+
+        std::sort(vect.begin(), vect.end(),
+                  [](const double a, const double b)
+                  {
+                      return a < b;
+                  });
+
+        for (int i = 0; i < vect.size(); ++i)
+        {
+            std ::cout << vect[i] << "  ";
+        }
+
+        std ::cout << std ::endl;
+    }
+}
 namespace vectors
 {
 
@@ -83,14 +123,40 @@ namespace ssylka
     }
 }
 
+namespace chrono_
+{
+
+    void example()
+    {
+        auto startTime = std::chrono::system_clock::now(); // текущее время
+        for (int i = 0; i < 100; ++i)
+        {
+            vectors::example();
+        }                                                // запуск алгоритма
+        auto endTime = std::chrono::system_clock::now(); // текущее время
+        auto milliseconds = std::chrono::duration_cast<
+            std::chrono::milliseconds>(
+            endTime - startTime); // получаем значение разницы в миллисекундах
+
+        std ::cout << "Vremya =  " << milliseconds.count() << std ::endl;
+    }
+}
 int main()
 {
 
     // std ::string s = "hello";
-    vectors::example();
+    // vectors::example();
+
+    //  chrono_::example();
 
     // int k = std ::string::npos;
     // ssylka::example();
+    // std::cout << std::numeric_limits<double>::max();
+
+    sort_vectors ::example();
+
+    std ::cout << round(0.7) << std ::endl;
+    std ::cout << round(0.45) << std ::endl;
 
     return 0;
 }

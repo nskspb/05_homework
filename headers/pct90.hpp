@@ -20,12 +20,15 @@ public:
         vect.push_back(next);
         num = round(0.9 * vect.size() + 0.5);
 
+        // O(n*logn)
+
         /*std::sort(vect.begin(), vect.end(),
                   [](const double a, const double b)
                   {
                       return a < b;
                   });*/
 
+        // O (N+)
         std ::nth_element(vect.begin(), vect.begin() + num, vect.end(),
                           [](const double a, const double b)
                           {

@@ -1,1 +1,3 @@
-05_homework
+Otus_cpp_basic_homework_05
+
+Выполнены основные и дополнительные задания

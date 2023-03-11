@@ -1,2 +1,5 @@
 **/build/*
 **/.vscode/*
+test*
+chrono_example.cpp
+random_shuffle.cpp

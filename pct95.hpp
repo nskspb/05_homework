@@ -8,17 +8,17 @@
 #include <vector>
 #include <algorithm>
 
-class Pct90 : public IStatistics
+class Pct95 : public IStatistics
 {
 public:
-    Pct90() : pct90{}, vect{}, num{}, number{}
+    Pct95() : pct95{}, vect{}
     {
     }
 
     void update(double next) override
     {
         vect.push_back(next);
-        num = round(0.9 * vect.size() + 0.5);
+        num = round(0.95 * vect.size() + 0.5);
 
         /*std::sort(vect.begin(), vect.end(),
                   [](const double a, const double b)
@@ -32,24 +32,23 @@ public:
                               return a < b;
                           });
 
-        pct90 = vect[num - 1];
+        pct95 = vect[num - 1];
     }
 
     double eval() const override
     {
-        return pct90;
+        return pct95;
     }
 
     const char *name() const override
     {
-        return "pct90";
+        return "pct95";
     }
 
-    ~Pct90() = default;
+    ~Pct95() = default;
 
 private:
     size_t num;
-    double number;
-    double pct90;
+    double pct95;
     std ::vector<double> vect;
 };

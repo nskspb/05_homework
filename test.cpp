@@ -12,12 +12,15 @@ namespace sort_vectors
 
         std ::vector<double> vect;
 
-        vect.push_back(5);
-        vect.push_back(13);
-        vect.push_back(3);
+        vect.push_back(10);
+        vect.push_back(9);
+        vect.push_back(8);
         vect.push_back(7);
-        vect.push_back(5);
         vect.push_back(6);
+        vect.push_back(5);
+        vect.push_back(4);
+        vect.push_back(3);
+        vect.push_back(2);
         vect.push_back(1);
 
         for (int i = 0; i < vect.size(); ++i)
@@ -27,11 +30,20 @@ namespace sort_vectors
 
         std ::cout << std ::endl;
 
-        std::sort(vect.begin(), vect.end(),
+        /*std::sort(vect.begin(), vect.end(),
                   [](const double a, const double b)
                   {
                       return a < b;
-                  });
+                  });*/
+
+        size_t num = 3;
+
+        std ::cout << "num = " << num << std ::endl;
+        std ::nth_element(vect.begin(), vect.begin() + num, vect.end(),
+                          [](const double a, const double b)
+                          {
+                              return a < b;
+                          });
 
         for (int i = 0; i < vect.size(); ++i)
         {
@@ -154,9 +166,6 @@ int main()
     // std::cout << std::numeric_limits<double>::max();
 
     sort_vectors ::example();
-
-    std ::cout << round(0.7) << std ::endl;
-    std ::cout << round(0.45) << std ::endl;
 
     return 0;
 }

@@ -4,8 +4,6 @@
 #include "Min.hpp"
 #include "Mean.hpp"
 #include "Std.hpp"
-#include "pct90.hpp"
-#include "pct95.hpp"
 #include "Pct.hpp"
 
 int main()

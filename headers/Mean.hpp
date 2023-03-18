@@ -15,7 +15,7 @@ public:
         count++;
     }
 
-    double eval() const override
+    double eval() override
     {
         return (sum / count);
     }

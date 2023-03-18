@@ -12,7 +12,7 @@
 class Pct : public IStatistics
 {
 public:
-    Pct() : pct{}, vect{}, num{}, number{}
+    Pct() : vect{}, num{}, number{}
     {
     }
 
@@ -23,6 +23,10 @@ public:
     void update(double next) override
     {
         vect.push_back(next);
+    }
+
+    double eval() override
+    {
         num = round((procent / 100) * vect.size() + 0.5);
 
         // O (N+)
@@ -32,12 +36,8 @@ public:
                               return a < b;
                           });
 
-        pct = vect[num - 1];
-    }
-
-    double eval() const override
-    {
-        return pct;
+        return vect[num - 1];
+        ;
     }
 
     const char *name() const override
@@ -55,6 +55,5 @@ private:
     double procent;
     size_t num;
     double number;
-    double pct;
     std ::vector<double> vect;
 };

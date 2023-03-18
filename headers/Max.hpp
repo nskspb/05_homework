@@ -18,7 +18,7 @@ public:
         }
     }
 
-    double eval() const override
+    double eval() override
     {
         return m_max;
     }

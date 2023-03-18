@@ -17,16 +17,15 @@ public:
     {
         sko = 0;
         vect.push_back(next);
+    }
+
+    double eval() override
+    {
         mean = std::accumulate(vect.begin(), vect.end(), 0) / vect.size();
         for (size_t i = 0; i < vect.size(); ++i)
         {
             sko += pow((vect[i] - mean), 2);
         }
-    }
-
-    double eval() const override
-    {
-
         return sqrt(sko / vect.size());
     }
 
